@@ -1,5 +1,5 @@
-const getIndex = (req, res, next) => {
-  res.render('index', { title: 'chat-ibilce2' });
+const getIndex = (req, res) => {
+        res.render('index', { title: 'chat-ibilce' });
 };
 
 module.exports.get = getIndex;
