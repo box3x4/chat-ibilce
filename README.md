@@ -8,4 +8,4 @@
 
 ## Hospedagem no Heroku
 
-https://chat-ibilce.heroku.com
+https://chat-ibilce.herokuapp.com
