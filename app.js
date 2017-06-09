@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 let env = process.env.NODE_ENV || 'dev';
 
-var forceSsl = function () {
+var forceSsl = function (req, res, next) {
     if (req.headers['x-forwarded-proto'] !== 'https') {
         return res.redirect(['https://', req.get('Host'), req.url].join(''));
     }
@@ -40,11 +40,11 @@ var forceSsl = function () {
 app.use(function (req, res, next) {
 
     if (env !== 'dev') {
-        forceSsl();
+        return forceSsl(req, res, next);
     }
 
     // other configurations etc for express go here..
-    next();
+    return next();
 });
 
 app.use(session({
