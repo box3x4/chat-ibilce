@@ -1,47 +1,48 @@
-module.exports = (io) => {
+module.exports = (io, namespace) => {
+        let nsp = io.of(namespace);
         let users = 0;
-        io.on('connection', (sckt) => {
+        nsp.on('connection', (socket) => {
                 let addedUser = false;
-                sckt.on('new message', (data) => {
-                        sckt.broadcast.emit('new message', {
-                                username: sckt.username,
+                socket.on('new message', (data) => {
+                        socket.broadcast.emit('new message', {
+                                username: socket.username,
                                 message:data
                         });
                 });
 
-                sckt.on('add user', (username) => {
+                socket.on('add user', (username) => {
                         if(addedUser) return;
 
-                        sckt.username = username;
+                        socket.username = username;
                         users++;
                         addedUser = true;
-                        sckt.emit('login', {
+                        socket.emit('login', {
                                 users: users
                         });
 
-                        sckt.broadcast.emit('user joined', {
-                                username: sckt.username,
+                        socket.broadcast.emit('user joined', {
+                                username: socket.username,
                                 users: users
                         });
                 });
 
-                sckt.on('typing', () => {
-                        sckt.broadcast.emit('typing', {
-                                username: sckt.username
+                socket.on('typing', () => {
+                        socket.broadcast.emit('typing', {
+                                username: socket.username
                         });
                 });
 
-                sckt.on('stop typing', () => {
-                        sckt.broadcast.emit('stop typing', {
-                                username: sckt.username
+                socket.on('stop typing', () => {
+                        socket.broadcast.emit('stop typing', {
+                                username: socket.username
                         });
                 });
 
-                sckt.on('disconnect', () => {
+                socket.on('disconnect', () => {
                         if(addedUser) {
                                 users--;
-                                sckt.broadcast.emit('user left', {
-                                        username: sckt.username,
+                                socket.broadcast.emit('user left', {
+                                        username: socket.username,
                                         users: users
                                 });
                         }

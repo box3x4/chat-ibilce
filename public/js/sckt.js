@@ -23,8 +23,10 @@ $(function() {
   var lastTypingTime;
   var $currentInput = $usernameInput.focus();
 
- // var socket = io('https://localhost:5000');
-  var socket = io('https://chat-ibilce.herokuapp.com/');
+  var link = window.location.href;
+  var namespace = link.split("/");
+
+  var socket = io('/'+namespace[namespace.length - 1]);
 
   function addParticipantsMessage (data) {
     var message = '';

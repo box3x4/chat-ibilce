@@ -1,8 +1,8 @@
-let User = require('../models/user');
+let User = require('../models/userLocal');
 let con = require('../models/db');
 
 const getReg = (req,res) => {
-        res.render('register');
+        return res.render('register', {auth : req.user});
 };
 
 const postReg = (req,res) => {
@@ -13,13 +13,12 @@ const postReg = (req,res) => {
                 senha: input.senha
         };
         let newUser = new User({'nome': set.nome
-                                ,'_id': set.username
+                                ,'username': set.username
                                 ,'senha': set.senha});
         User.newUser(newUser, (err) => {
                 if(err) console.log(err);
-                console.log(set);
         });
-        res.render('index', {title: 'user registered'});
+        return res.render('index');
 };
 
 module.exports.get = getReg;

@@ -8,4 +8,9 @@
 
 ## Hospedagem no Heroku
 
-https://chat-ibilce.herokuapp.com
+<details>
+  <summary>Credenciais</summary>
+  email: rafael_carreira11@hotmail.com
+  
+  senha: app-chat-feio
+</details>

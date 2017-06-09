@@ -1,0 +1,71 @@
+<%- include header.ejs%>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Chatter</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/register">Registrar</a>
+        </li>
+        <li>
+          <a href="/about">Sobre</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+              <li>
+                      <a href="/logout">Logout</a>
+              </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="page-header">
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      <h1>Salas de Chat</h1>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <div class="well">
+      <h2>Animes</h2>
+      <p>Um chat para falar sobre animes, desde Cowboy Beebop ate Eromanga-sensei!</p>
+      <p>
+        <a class="btn btn-primary" href="/chats/animes">Entrar</a>
+      </p>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <div class="well">
+      <h2>Tecnologia</h2>
+      <p>De bits aos mais novos frameworks! Um free-for-all sobre tecnologia.</p>
+      <p>
+        <a class="btn btn-primary" href="/chats/tecnologia">Entrar</a>
+      </p>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <div class="well">
+      <h2>Cantina do Gil</h2>
+      <p>Conversas e cafezinho do intervalo.</p>
+      <p>
+        <a class="btn btn-primary" href="/chats/general">Entrar</a>
+      </p>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <div class="well">
+      <h2>Roles</h2>
+      <p>Marque seus roles. So nao esqueca de nos chamar!</p>
+      <p>
+        <a class="btn btn-primary" href="/chats/roles">Entrar</a>
+      </p>
+    </div>
+  </div>
+  <a class="btn btn-default" onclick="window.history.back();">Voltar</a>
+</div>
+<%- include footer.ejs%>

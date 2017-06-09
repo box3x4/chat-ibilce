@@ -1,5 +1,6 @@
 const getIndex = (req, res) => {
-        res.render('index', { title: 'chat-ibilce' });
+        console.log(req.user);
+        return res.render('index', {auth : req.user});
 };
 
 module.exports.get = getIndex;

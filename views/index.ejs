@@ -1,21 +1,86 @@
 <%- include header.ejs%>
-<h1><%= title %></h1>
-<br />
-  <ul class="pages">
-    <li class="chat page">
-      <div class="chatArea">
-        <ul class="messages"></ul>
-      </div>
-      <input class="inputMessage" placeholder="Type here..."/>
-    </li>
-    <li class="login page">
-      <div class="form">
-        <h3 class="title">What's your nickname?</h3>
-        <input class="usernameInput" type="text" maxlength="14" />
-      </div>
-    </li>
-  </ul>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
-<script src="/js/sckt.js"></script>
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Chatter</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/register">Registrar</a>
+        </li>
+        <li>
+          <a href="/about">Sobre</a>
+        </li>
+      </ul>
+      <% if (auth) {%>
+      <ul class="nav navbar-nav navbar-right">
+              <li>
+                      <a href="/logout">Logout</a>
+              </li>
+      </ul>
+      <% } %>
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="page-header">
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      <h1>Chatter</h1>
+      <p class="lead">Um lugar para conversar</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-8">
+    <div class="well">
+      <h1>Venha conversar!</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex dolor, faucibus at facilisis id, condimentum eu lorem. Nam vulputate hendrerit varius. Proin scelerisque neque neque. In a efficitur sapien. Cras tellus orci, tincidunt vitae vulputate non, interdum ut nibh. Aliquam dui erat, rutrum eget scelerisque et, tincidunt sit amet orci. Vestibulum mattis, erat a efficitur pharetra, ipsum metus cursus ante, vitae ultrices sapien erat mattis nibh.</p>
+      <p>Fusce efficitur feugiat venenatis. Phasellus sapien tellus, efficitur sed nibh eget, fringilla vehicula turpis. Curabitur id consequat leo, eu dictum est. Pellentesque blandit congue tempor. Nam tristique metus ac venenatis porttitor. Aenean turpis nisi, aliquet eu risus vel, porta vehicula justo. Pellentesque quis ultricies tellus. Aenean ante nisi, porta eget ullamcorper ut, consectetur ac diam. Nulla pulvinar rutrum magna, in dapibus eros gravida nec. Pellentesque dignissim justo sed nisi fringilla fermentum. Quisque porta leo ac nulla dignissim, quis aliquam libero lobortis. Integer volutpat tempus tellus, pharetra hendrerit nisi euismod in. Pellentesque tristique justo sit amet justo rutrum bibendum. Pellentesque imperdiet enim tellus, sit amet suscipit ante aliquam id. Cras nec iaculis eros.</p>
+      <p>Proin vitae libero auctor, maximus neque eu, pharetra dolor. Suspendisse justo lorem, sagittis eget blandit vel, ultrices sed lorem. Ut interdum porttitor nibh, in finibus nisl bibendum vel. Proin tristique dui risus, sit amet tristique tellus dictum id. Duis ut nibh efficitur, faucibus sapien hendrerit, finibus libero. Vivamus eget dignissim eros. Pellentesque sit amet sapien nec dolor facilisis egestas. Praesent a ante nec odio fringilla porttitor. Aenean finibus velit id tempor porttitor. Quisque feugiat pellentesque ante eleifend fringilla. In hac habitasse platea dictumst. Aliquam varius blandit lorem, ut luctus massa sodales at. Nunc sagittis erat eget iaculis consectetur. Maecenas vel velit efficitur risus convallis malesuada at vitae arcu. Donec non elit nunc. Mauris non arcu eget enim lacinia tempor bibendum vitae eros.</p>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-4">
+    <div class="well">
+            <legend><strong>Login</strong></legend>
+      <form class="form-horizontal" method="post" action="/login">
+        <fieldset>
+          <label for="username">Nome de usuario</label>
+          <div class="form-group">
+              <div class="col-lg-12">
+                <input name="username" type="text" class="form-control"/>
+              </div>
+          </div>
+          <label for="senha">Senha</label>
+          <div class="form-group">
+              <div class="col-lg-12">
+                <input name="senha" type="password" class="form-control"/>
+              </div>
+          </div>
+          <div class="row">
+            <a class="btn btn-default" href="/register">Registrar</a>
+            <button class="btn btn-primary" type="submit">Login</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-4">
+          <div class="well">
+                  <% if(auth) { %>
+                        <a href="/chats">
+                                  <legend><strong>Chats</strong></legend>
+                        </a>
+                  <% } else {%>
+                          <legend><strong>Chats</strong></legend>
+                  <% } %>
+                  <p><strong>Anime</strong></p>
+                  <p><strong>Tecnologia</strong></p>
+                  <p><strong>Cantina do Gil</strong></p>
+                  <p><strong>Roles</strong></p>
+                  <p><strong>Grupo de Estudos</strong></p>
+          </div>
+  </div>
+</div>
 <%- include footer.ejs%>
