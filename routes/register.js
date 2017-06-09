@@ -18,7 +18,8 @@ const postReg = (req,res) => {
         User.newUser(newUser, (err) => {
                 if(err) console.log(err);
         });
-        return res.render('index');
+        return res.render('index',{auth: req.user});
+	
 };
 
 module.exports.get = getReg;
