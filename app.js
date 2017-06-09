@@ -29,7 +29,7 @@ app.use(session({
   saveUninitialized: true,
   resave: true,
   store: new mongoStore({
-    url: 'mongodb://localhost/chat-ibilce',
+    url: 'mongodb://chat-ibilcedb:meuherokuapp@ds161931.mlab.com:61931/heroku_543rhqr5',
     autoRemove: 'native'
   })
 }));
