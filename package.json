@@ -19,5 +19,6 @@
     "bcryptjs": "*",
     "passport": "*",
     "passport-local" : "*"
+    "nodemon" : "*"
   }
 }
