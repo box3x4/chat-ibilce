@@ -1,16 +1,19 @@
 <%- include header.ejs%>
+
+      <style type="text/css">
+      ::-webkit-scrollbar { 
+    display: none; 
+  }
+    </style>
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">Chatter</a>
+      <a class="navbar-brand" href="/"</a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
           <a href="/register">Registrar</a>
-        </li>
-        <li>
-          <a href="/about">Sobre</a>
         </li>
       </ul>
       <% if (auth) {%>
@@ -27,18 +30,20 @@
 <div class="page-header">
   <div class="row">
     <div class="col-xs-12 col-md-8">
-      <h1>Chatter</h1>
-      <p class="lead">Um lugar para conversar</p>
+      <h1>Chat Ibilce</h1>
+      <p class="lead">O ponto de encontro virtual da UNESP de Rio Preto</p>
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12 col-md-8">
+  <div class="col-xs-12 col-md-8 hidden-xs">
     <div class="well">
-      <h1>Venha conversar!</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex dolor, faucibus at facilisis id, condimentum eu lorem. Nam vulputate hendrerit varius. Proin scelerisque neque neque. In a efficitur sapien. Cras tellus orci, tincidunt vitae vulputate non, interdum ut nibh. Aliquam dui erat, rutrum eget scelerisque et, tincidunt sit amet orci. Vestibulum mattis, erat a efficitur pharetra, ipsum metus cursus ante, vitae ultrices sapien erat mattis nibh.</p>
-      <p>Fusce efficitur feugiat venenatis. Phasellus sapien tellus, efficitur sed nibh eget, fringilla vehicula turpis. Curabitur id consequat leo, eu dictum est. Pellentesque blandit congue tempor. Nam tristique metus ac venenatis porttitor. Aenean turpis nisi, aliquet eu risus vel, porta vehicula justo. Pellentesque quis ultricies tellus. Aenean ante nisi, porta eget ullamcorper ut, consectetur ac diam. Nulla pulvinar rutrum magna, in dapibus eros gravida nec. Pellentesque dignissim justo sed nisi fringilla fermentum. Quisque porta leo ac nulla dignissim, quis aliquam libero lobortis. Integer volutpat tempus tellus, pharetra hendrerit nisi euismod in. Pellentesque tristique justo sit amet justo rutrum bibendum. Pellentesque imperdiet enim tellus, sit amet suscipit ante aliquam id. Cras nec iaculis eros.</p>
-      <p>Proin vitae libero auctor, maximus neque eu, pharetra dolor. Suspendisse justo lorem, sagittis eget blandit vel, ultrices sed lorem. Ut interdum porttitor nibh, in finibus nisl bibendum vel. Proin tristique dui risus, sit amet tristique tellus dictum id. Duis ut nibh efficitur, faucibus sapien hendrerit, finibus libero. Vivamus eget dignissim eros. Pellentesque sit amet sapien nec dolor facilisis egestas. Praesent a ante nec odio fringilla porttitor. Aenean finibus velit id tempor porttitor. Quisque feugiat pellentesque ante eleifend fringilla. In hac habitasse platea dictumst. Aliquam varius blandit lorem, ut luctus massa sodales at. Nunc sagittis erat eget iaculis consectetur. Maecenas vel velit efficitur risus convallis malesuada at vitae arcu. Donec non elit nunc. Mauris non arcu eget enim lacinia tempor bibendum vitae eros.</p>
+    <h3> Faça seu login e participe da conversa também</h3>
+    <hr>
+      <div class="well pre-scrollable " style="height:600px " id="scrollMe">
+      <div class="scrollable" id="talker">
+      </div>
+      </div>
     </div>
   </div>
   <div class="col-xs-12 col-md-4">
@@ -83,4 +88,119 @@
           </div>
   </div>
 </div>
+  </div>
+
+
+    <script type="text/javascript">
+
+var Dialogo= [
+"<b>VinicuisMat:</b> Ok",
+"<b>VinicuisMat:</b> Muito obg pelo material de icc ^^",
+"<b>Tobias:</b> Nossa",
+"<b>Tobias:</b> Valeu Bog",
+"<b>Bog:</b> ta faltando um pouco de conteudo nesse pdf ai (uma parte é sobre o DCCE, o resto eu não sei), então só vão com um pouco de cuidado",
+"<b>Bog:</b> e lembrem que a matéria dela é cumulativa :(",
+"<b>Bog:</b> Alissa, Gian, Luiza, Filipe, Thiago, valeu pelo help lá hoje (mesmo aos que sairam mais cedo). Ajudou a gnt bastante haha",
+"<b>Bog:</b> 🤗🤗",
+"<b>Manu:</b> É nóis 😊",
+"<b>Bog:</b> Oq caiu em metodologia de vcs?",
+"<b>Sara:</b> Eufimismo",
+"<b>Sara:</b> Figuras de linguagem",
+"<b>Sara:</b> Gramática",
+"<b>Sara:</b> Etc",
+"<b>Joesley:</b> Paralelismo, fazer um gráfico, diferença entre publicação em evento e periódico,",
+"<b>Joesley:</b> Não lembro o resto",
+"<b>julia:</b> Colocar paralelismo na frase",
+"<b>julia:</b> Gente",
+"<b>julia:</b> Esqueci o carregador do meu note no lab hj",
+"<b>julia:</b> Se alguem achar leva segunda pra mim pls",
+"<b>julia:</b> Pago um café ❤😂",
+"<b>Bog:</b> normalmente, se as tias da limpeza acharem antes, elas guardam",
+"<b>julia:</b> Ok",
+"<b>julia:</b> Obg  Pessoas",
+"<b>Bog:</b> oq acharam da psicodelia?",
+"<b>Joesley:</b> Putaquepariu",
+"<b>Joesley:</b> Que festa maravilhosa",
+"<b>Joesley:</b> Não dá nem pra comparar",
+"<b>Joesley:</b> As de lá eram um lixo total",
+"<b>Joesley:</b> Era só funk e eletrônica lá tinha um espaço fritação ontem",
+"<b>Bog:</b> mas acho que a maioria nem viu haha",
+"<b>Joesley:</b> Eu vi a hora que estava indo embora só hahaha",
+"<b>Bog:</b> gostou da banda?",
+"<b>Joesley:</b> Sim",
+"<b>Joesley:</b> To sem voz graças a ela",
+"<b>Bog:</b> hahaha",
+"<b>Joesley:</b> E sem joelho também",
+"<b>Pooh:</b> Chegou um momento q eu n tinha mais força pra ficar em pé",
+"<b>Pooh:</b> Obg a todos envolvidos, foi bem bom",
+"<b>Joesley:</b> Mano",
+"<b>Joesley:</b> A Luiza é muito fraca",
+"<b>Joesley:</b> Ela ficou com dor no pé a ponto de não aguentar ficar em pé faltando tipo 1h30 pra festa acabar",
+"<b>Bog:</b> acontece hahah",
+"<b>Joesley:</b> Depois eu que sou a velha",
+"<b>Bog:</b> meu pé começa a doer com esse meu tenis depois de um tempo",
+"<b>Bog:</b> mas a gnt tira força do além hahaha",
+"<b>Joesley:</b> Por mim eu dançava até a hora de ir pro ônibus",
+"<b>Bog:</b> alias, duas Vcs tão de parabéns Melhor rodinha da comp",
+"<b>Bog:</b> Queria ter participado, não deu :(",
+"<b>Mionzinho:</b> @⁨Alissa Ferian⁩ ce era da unicamp de campinas ne?",
+"<b>Joesley:</b> Da Unicamp de Limeira",
+"<b>Mionzinho:</b> Ah, droga",
+"<b>Daiana:</b> Alguém sabe se o RU vai ser vendido Amanhã?",
+"<b>Daiana:</b> Por causa da paralização e tal...",
+"<b>Bog:</b> acho que paralisação foi deliberada apenas pelos docentes",
+"<b>Bog:</b> paralização e no site diz que é quinta mesmo",
+"<b>Bog:</b> amanhã é só pra permanencia",
+"<b>Daiana:</b> Entendi",
+"<b>Daiana:</b> Vou confiar hein Bog kkkkk",
+"<b>Bog:</b> É oq tá no site",
+"<b>Daiana:</b> Podecrr",
+"<b>Daiana:</b> *cre",
+"<b>Sergio:</b> Bem pensado mudar pra 7 segundos",
+"<b>Sergio:</b> Porem fone resolve hahahahhaLucas ",
+"<b>Pinguim:</b> Que ceis tão aprontando?",
+"<b>Manao:</b> Boa pergunta",
+"<b>VinicuisMat:</b> Tbm queria saber",
+"<b>Bog:</b> Pros bixos que ajudaram quanto a apresentação do projeto: deitamos lindamente!",
+"<b>Perdido:</b> Também queria saber",
+"<b>Daiana:</b> Também queria saber",
+"<b>Ciro:</b> Também queria saber",
+"<b>manao:</b> Também queria saber",
+"<b>julia:</b> Também queria nao saber",
+"<b>julia:</b> Q?",
+"<b>julia:</b> An?",
+"<b>Ciro:</b> An?",
+"<b>Perdido:</b> Oi?",
+"<b>julia:</b> Onde",
+"<b>Bog:</b> Preciso de um favor de vcs, galere",
+"<b>Joesley:</b> Fale",
+"<b>Daiana:</b> Não",
+"<b>Bog:</b> Quem puder me mandar as listas de exercícios, o que lembrar de provas, as vezes PDF de algum livro fora do usual, por favor, faça-o",
+"<b>Bog:</b> Não precisa ser agr, quando puderem",
+"<b>Bog:</b> Pros próximos bixos terem mais listas e tal, de conteudo",
+"<b>Bog:</b> Basicamente, um amigos da escola, só que na grade nova haha",
+"<b>Pooh:</b> Só incorpora no antigo ué",
+"<b>Bog:</b> Sim sima do antigo que não tem no novo Ideia é dar merge, mas por enquanto manter separado"
+]
+  var contador = 0;
+  var tempo= 400;
+    function appendText() {
+      var div = document.getElementById('talker');
+      
+      div.innerHTML = div.innerHTML+Dialogo[contador] + '<br/>';
+      var div = document.getElementById('scrollMe');
+
+      div.scrollTop = div.scrollHeight;
+
+      contador=contador+1;
+      if(contador >= Dialogo.length-1){
+        contador=0;
+      }
+
+      tempo= Math.round((Math.random()*2500));
+      window.setTimeout(appendText, tempo);
+    }
+
+    appendText();
+    </script>
 <%- include footer.ejs%>
