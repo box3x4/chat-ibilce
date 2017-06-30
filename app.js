@@ -29,21 +29,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 let env = process.env.NODE_ENV || 'dev';
 
-var forceSsl = function (req, res, next) {
-    if (req.headers['x-forwarded-proto'] !== 'https') {
+let forceSsl = (req, res, next) => {
+    if (req.headers['x-forwarded-proto'] !== 'https')
         return res.redirect(['https://', req.get('Host'), req.url].join(''));
-    }
+
     return next();
  };
 
 
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
 
-    if (env !== 'dev') {
+    if (env !== 'dev')
         return forceSsl(req, res, next);
-    }
 
-    // other configurations etc for express go here..
     return next();
 });
 
@@ -68,6 +66,6 @@ let handler = require('./routes/socket/handler');
 
 http.listen(app.get('port'));
 
-module.exports.chat = (nsp) => {
-  handler(io, nsp);
+module.exports.chat = (room) => {
+  handler(io, room);
 };

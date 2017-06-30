@@ -2,7 +2,7 @@ let app = require('../app');
 
 const getChatRoom = (req, res) => {
   let chatRoom = req.params.id;
-  app.chat(`/${chatRoom}`);
+  app.chat(`${chatRoom}`);
   return res.render('chatRoom');
 };
 

@@ -269,6 +269,7 @@ $(function() {
 
   socket.on('disconnect', function () {
     log('you have been disconnected');
+    socket.disconnect(true);
   });
 
   socket.on('reconnect', function () {
