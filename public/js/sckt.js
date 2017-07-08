@@ -9,50 +9,26 @@ $(function() {
 
   // Initialize variables
   var $window = $(window);
-  var $usernameInput = $('.usernameInput'); // Input for username
   var $messages = $('.messages'); // Messages area
-  var $inputMessage = $('.inputMessage'); // Input message input box
-
-  var $loginPage = $('.login.page'); // The login page
-  var $chatPage = $('.chat.page'); // The chatroom page
+  var $inputMessage = $('.form-control'); // Input message input box
 
   // Prompt for setting a username
   var username;
   var connected = false;
   var typing = false;
   var lastTypingTime;
-  var $currentInput = $usernameInput.focus();
+  var $currentInput;
 
   var link = window.location.href;
-  var namespace = link.split("/");
+  var namespace = link.split("/").pop();
 
-  var socket = io('/'+namespace[namespace.length - 1]);
+  var socket = io('/'+namespace);
 
-  function addParticipantsMessage (data) {
-    var message = '';
-    if (data.numUsers === 1) {
-      message += "there's 1 participant";
-    } else {
-      message += "there are " + data.numUsers + " participants";
-    }
-    log(message);
+  function capitalize(nsp) {
+    return nsp.charAt(0).toUpperCase() + nsp.slice(1);
   }
 
-  // Sets the client's username
-  function setUsername () {
-    username = cleanInput($usernameInput.val().trim());
-
-    // If the username is valid
-    if (username) {
-      $loginPage.fadeOut();
-      $chatPage.show();
-      $loginPage.off('click');
-      $currentInput = $inputMessage.focus();
-
-      // Tell the server your username
-      socket.emit('add user', username);
-    }
-  }
+  socket.emit('add user', username);
 
   // Sends a chat message
   function sendMessage () {
@@ -105,7 +81,7 @@ $(function() {
   // Adds the visual chat typing message
   function addChatTyping (data) {
     data.typing = true;
-    data.message = 'is typing';
+    data.message = 'está digitando';
     addChatMessage(data);
   }
 
@@ -192,10 +168,9 @@ $(function() {
   }
 
   // Keyboard events
-
   $window.keydown(function (event) {
     // Auto-focus the current input when a key is typed
-    if (!(event.ctrlKey || event.metaKey || event.altKey)) {
+    if (!(event.ctrlKey || event.metaKey || event.altKey) && $currentInput) {
       $currentInput.focus();
     }
     // When the client hits ENTER on their keyboard
@@ -214,13 +189,6 @@ $(function() {
     updateTyping();
   });
 
-  // Click events
-
-  // Focus input when clicking anywhere on login page
-  $loginPage.click(function () {
-    $currentInput.focus();
-  });
-
   // Focus input when clicking on the message input's border
   $inputMessage.click(function () {
     $inputMessage.focus();
@@ -230,13 +198,17 @@ $(function() {
 
   // Whenever the server emits 'login', log the login message
   socket.on('login', function (data) {
+
     connected = true;
+
     // Display the welcome message
-    var message = "Welcome to Socket.IO Chat – ";
+    var message = "Bem-vindo ao Chat de "+ capitalize(namespace);
     log(message, {
       prepend: true
     });
-    addParticipantsMessage(data);
+
+    username = data.username;
+    console.log(username);
   });
 
   // Whenever the server emits 'new message', update the chat body
@@ -246,14 +218,12 @@ $(function() {
 
   // Whenever the server emits 'user joined', log it in the chat body
   socket.on('user joined', function (data) {
-    log(data.username + ' joined');
-    addParticipantsMessage(data);
+    log(data.username + ' se juntou ao chat');
   });
 
   // Whenever the server emits 'user left', log it in the chat body
   socket.on('user left', function (data) {
-    log(data.username + ' left');
-    addParticipantsMessage(data);
+    log(data.username + ' saiu');
     removeChatTyping(data);
   });
 
@@ -268,19 +238,19 @@ $(function() {
   });
 
   socket.on('disconnect', function () {
-    log('you have been disconnected');
-    socket.disconnect(true);
+    log('você foi desconectado');
+    socket.disconnect();
   });
 
   socket.on('reconnect', function () {
-    log('you have been reconnected');
+    log('você foi reconectado');
     if (username) {
       socket.emit('add user', username);
     }
   });
 
   socket.on('reconnect_error', function () {
-    log('attempt to reconnect has failed');
+    log('sua tentativa de reconectar falhou');
   });
 
 });

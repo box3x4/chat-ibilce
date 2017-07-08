@@ -1,8 +1,8 @@
 <%- include header.ejs%>
 
       <style type="text/css">
-      ::-webkit-scrollbar { 
-    display: none; 
+      ::-webkit-scrollbar {
+    display: none;
   }
     </style>
 <div class="navbar navbar-default navbar-fixed-top">
@@ -73,13 +73,7 @@
   </div>
   <div class="col-xs-12 col-md-4">
           <div class="well">
-                  <% if(auth) { %>
-                        <a href="/chats">
-                                  <legend><strong>Chats</strong></legend>
-                        </a>
-                  <% } else {%>
-                          <legend><strong>Chats</strong></legend>
-                  <% } %>
+                  <legend><strong>Chats</strong></legend>
                   <p><strong>Anime</strong></p>
                   <p><strong>Tecnologia</strong></p>
                   <p><strong>Cantina do Gil</strong></p>
@@ -178,7 +172,7 @@ var Dialogo= [
   var tempo= 400;
     function appendText() {
       var div = document.getElementById('talker');
-      
+
       div.innerHTML = div.innerHTML+Dialogo[contador] + '<br/>';
       var div = document.getElementById('scrollMe');
 

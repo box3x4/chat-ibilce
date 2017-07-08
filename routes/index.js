@@ -1,5 +1,6 @@
-const getIndex = (req, res) => {
-        console.log(req.user);
+const getIndex = (req, res, next) => {
+        if(req.isAuthenticated)
+          return res.render('chats');
         return res.render('index', {auth : req.user});
 };
 

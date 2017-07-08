@@ -66,6 +66,6 @@ let handler = require('./routes/socket/handler');
 
 http.listen(app.get('port'));
 
-module.exports.chat = (room) => {
-  handler(io, room);
+module.exports.chat = (room, user) => {
+  handler(io, room, user);
 };

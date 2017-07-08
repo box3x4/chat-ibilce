@@ -6,8 +6,7 @@ passport.use('login', new localStrategy({
         usernameField : 'username',
         passwordField : 'senha',
         passReqToCallback : true
-},
-  (req, username, senha, done) => {
+}, (req, username, senha, done) => {
 
     User.getUserByUsername(username, (err, user) => {
 
@@ -19,12 +18,12 @@ passport.use('login', new localStrategy({
       User.comparePassword(senha, user.senha, (err, match) => {
 
         if(err)
-          return  done(err);
-        if(match) {
+          return done(err);
+
+        if(match)
           return done(null, user);
-        } else {
+        else
           return done(null, false, {message: "Senha invalida!"});
-        }
     });
   });
 }));
