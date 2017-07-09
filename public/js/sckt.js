@@ -12,8 +12,6 @@ $(function() {
   var $messages = $('.messages'); // Messages area
   var $inputMessage = $('.form-control'); // Input message input box
 
-  $inputMessage.focus();
-
   // Prompt for setting a username
   var username;
   var connected = false;
@@ -25,6 +23,8 @@ $(function() {
   var namespace = link.split("/").pop();
 
   var socket = io('/'+namespace);
+
+  $inputMessage.focus();
 
   function capitalize(nsp) {
     return nsp.charAt(0).toUpperCase() + nsp.slice(1);
@@ -208,6 +208,8 @@ $(function() {
     log(message, {
       prepend: true
     });
+
+    username = data.username;
   });
 
   // Whenever the server emits 'new message', update the chat body
