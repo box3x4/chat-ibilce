@@ -95,6 +95,10 @@ ul {
 .message.typing .messageBody {
   color: gray;
 }
+.message.typing {
+  position: absolute;
+  bottom:0;
+}
 
 .username {
   font-weight: 700;
