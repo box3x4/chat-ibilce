@@ -1,10 +1,11 @@
 # chat-ibilce
 
 # TODO
-- [x] escolher o tema do projeto
-- [x] escolher a plataforma/tecnologias para fazermos o aplicativo: nativo, híbrida ou WEB APP OK
-- [ ] dividir tarefas
 
+- [ ] Flash message - login com erro e registros duplicados
+- [ ] Numero de players nas sala em /chats
+- [ ] URI do banco no ENV do heroku
+- [ ] Numero de players na welcome message  
 
 ## Hospedagem no Heroku
 
