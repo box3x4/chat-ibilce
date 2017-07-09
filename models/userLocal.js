@@ -3,7 +3,7 @@ const schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 
 const userSchema = new schema({
-        _id: String,
+        username: String,
         senha: String
 });
 
@@ -29,7 +29,7 @@ module.exports.comparePassword = (cPass, hash, callback) => {
 
 module.exports.getUserByUsername = (username, callback) => {
 
-  User.findOne({_id: username}, callback);
+  User.findOne({username: username}, callback);
 };
 
 module.exports.getUserById = (id, callback) => {

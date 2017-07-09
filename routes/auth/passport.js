@@ -3,7 +3,7 @@ const localStrategy = require('passport-local').Strategy;
 const User = require('../../models/userLocal');
 
 passport.use('login', new localStrategy({
-        usernameField : '_id',
+        usernameField : 'username',
         passwordField : 'senha',
         passReqToCallback : true
 }, (req, username, senha, done) => {
@@ -11,7 +11,7 @@ passport.use('login', new localStrategy({
     User.getUserByUsername(username, (err, user) => {
 
       if(err)
-        return done(err);
+        return console.log(err);
       if(!user)
         return done(null, false, {message: 'Usuario não cadastrado.'});
 
@@ -22,6 +22,7 @@ passport.use('login', new localStrategy({
 
         if(match)
           return done(null, user);
+
         else
           return done(null, false, {message: "Senha invalida!"});
     });
