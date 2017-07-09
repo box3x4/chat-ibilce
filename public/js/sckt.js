@@ -12,6 +12,8 @@ $(function() {
   var $messages = $('.messages'); // Messages area
   var $inputMessage = $('.form-control'); // Input message input box
 
+  $inputMessage.focus();
+
   // Prompt for setting a username
   var username;
   var connected = false;
@@ -206,9 +208,6 @@ $(function() {
     log(message, {
       prepend: true
     });
-
-    username = data.username;
-    console.log(username);
   });
 
   // Whenever the server emits 'new message', update the chat body
