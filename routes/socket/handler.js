@@ -19,7 +19,7 @@ module.exports = (io, namespace, user) => {
       if (addedUser)
         return;
 
-      socket.username = user._id;
+      socket.username = user.username;
       ++numUsers;
       addedUser = true;
 
