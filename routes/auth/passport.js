@@ -3,7 +3,7 @@ const localStrategy = require('passport-local').Strategy;
 const User = require('../../models/userLocal');
 
 passport.use('login', new localStrategy({
-        usernameField : 'username',
+        usernameField : '_id',
         passwordField : 'senha',
         passReqToCallback : true
 }, (req, username, senha, done) => {
