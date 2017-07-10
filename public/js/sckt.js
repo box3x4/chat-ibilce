@@ -10,7 +10,7 @@ $(function() {
   // Initialize variables
   var $window = $(window);
   var $messages = $('.messages'); // Messages area
-  var $inputMessage = $('.form-control'); // Input message input box
+  var $inputMessage = $('.input-message'); // Input message input box
 
   // Prompt for setting a username
   var username;
