@@ -50,7 +50,7 @@ app.use(session({
   saveUninitialized: true,
   resave: true,
   store: new mongoStore({
-    url: 'mongodb://chat-ibilcedb:meuherokuapp@ds161931.mlab.com:61931/heroku_543rhqr5',
+    url: process.env.MONGODB_URI || 'mongodb://localhost/chat-ibilce',
     autoRemove: 'native'
   })
 }));
