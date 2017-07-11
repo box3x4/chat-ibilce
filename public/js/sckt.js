@@ -3,8 +3,12 @@ $(function() {
   var TYPING_TIMER_LENGTH = 400; // ms
   var COLORS = [
     '#e21400', '#91580f', '#f8a700', '#f78b00',
-    '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
-    '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
+    '#58dc00', '#3aaf00', '#a8f07a', '#4ae8c4',
+    '#3b88eb', '#1EA0DC', '#a700ff', '#d300e7',
+    '#C0C0C0', '#FF66B2', '#FF66FF', '#B266FF',
+    '#6666FF', '#66B2FF', '#66FFFF', '#66FFB2',
+    '#66FF66', '#B2FF66', '#FFFF66', '#FFB266', '#FF666'
+    
   ];
 
   // Initialize variables
