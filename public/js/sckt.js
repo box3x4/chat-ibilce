@@ -208,7 +208,7 @@ $(function() {
     connected = true;
 
     // Display the welcome message
-    var message = "Bem-vindo ao Chat de "+ capitalize(namespace);
+    var message = "Bem-vindo ao Chat de "+ capitalize(namespace) + ". " + numUsers "usuários online";
     log(message, {
       prepend: true
     });
