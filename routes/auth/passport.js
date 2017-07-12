@@ -13,7 +13,7 @@ passport.use('login', new localStrategy({
       if(err)
         return console.log(err);
       if(!user)
-        return done(null, false, {message: 'Usuario não cadastrado.'});
+        return done(null, false);
 
       User.comparePassword(senha, user.senha, (err, match) => {
 
@@ -24,7 +24,7 @@ passport.use('login', new localStrategy({
           return done(null, user);
 
         else
-          return done(null, false, {message: "Senha invalida!"});
+          return done(null, false);
     });
   });
 }));

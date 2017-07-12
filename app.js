@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
+const flash = require('connect-flash');
 const mongoStore = require('connect-mongo')(session);
 //express and middlewares
 
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
 
 
 let env = process.env.NODE_ENV || 'dev';
@@ -50,7 +52,7 @@ app.use(session({
   saveUninitialized: true,
   resave: true,
   store: new mongoStore({
-    url: process.env.MONGODB_URI || 'mongodb://localhost/chat-ibilce',
+    url: process.env.MONGODB_URI || 'mongodb://localhost:27017/chat_ibilce',
     autoRemove: 'native'
   })
 }));

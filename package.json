@@ -6,19 +6,20 @@
     "start": "nodemon ./app.js"
   },
   "dependencies": {
+    "bcryptjs": "*",
     "body-parser": "~1.17.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "*",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
-    "express": "~4.15.2",
-    "express-session" : "*",
-    "connect-mongo" : "*",
-    "morgan": "~1.8.1",
     "ejs": "*",
+    "express": "~4.15.2",
+    "express-session": "*",
     "mongoose": "*",
-    "socket.io": "*",
-    "bcryptjs": "*",
+    "morgan": "~1.8.1",
+    "nodemon": "*",
     "passport": "*",
-    "passport-local" : "*",
-    "nodemon" : "*"
+    "passport-local": "*",
+    "socket.io": "*"
   }
 }

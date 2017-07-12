@@ -3,7 +3,7 @@ let con = require('../models/db');
 const bcrypt = require('bcryptjs');
 
 const getReg = (req, res, next) => {
-        return res.render('register');
+        return res.render('register', {error : false});
 };
 
 const postReg = (req, res, next) => {
@@ -17,7 +17,7 @@ const postReg = (req, res, next) => {
         User.getUserByUsername(set.username, (err, user) => {
 
           if(user)
-            return res.redirect('register');
+            return res.render('register', {error: true});
           else {
             let newUser = new User({'username': set.username
                                     ,'senha': set.senha});

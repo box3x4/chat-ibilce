@@ -15,6 +15,13 @@
 </div>
 <div class="container">
 <div class="page-header">
+        <% if (error) { %>
+                <div class="panel panel-danger">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Usuário já cadastrado</h3>
+                        </div>
+                </div>
+        <% } %>
   <div class="row">
     <div class="col-xs-12 col-md-8">
       <h1>Registrar</h1>

@@ -9,7 +9,7 @@ const chatRoom = require('./chatRoom');
 const loggedIn = (req, res, next) => {
         if(req.isAuthenticated())
           return next();
-        return res.render('index', {auth: false});
+        return res.render('index');
 }
 
 let router = express.Router();
@@ -22,7 +22,7 @@ router.post('/register', register.post);
 router.post('/login', auth.authenticate('login', {
         successRedirect : '/chats',
         failureRedirect : '/',
-        failureFlash : false
+        failureFlash : true
 }));
 router.get('/logout', auth.logout);
 
