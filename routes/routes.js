@@ -15,14 +15,15 @@ const loggedIn = (req, res, next) => {
 let router = express.Router();
 
 router.get('/', loggedIn, index.get);
-router.get('/auth_failed', index.getFail);
+router.get('/auth_failed', loggedIn, index.getFail);
 
 router.get('/register', register.get);
 router.post('/register', register.post);
 
 router.post('/login', auth.authenticate('login', {
         successRedirect : '/chats',
-        failureRedirect : '/auth_failed'
+        failureRedirect : '/auth_failed',
+        failureFlash: false
 }));
 router.get('/logout', auth.logout);
 

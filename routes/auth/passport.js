@@ -11,7 +11,7 @@ passport.use('login', new localStrategy({
     User.getUserByUsername(username, (err, user) => {
 
       if(err)
-        return console.log(err);
+        return done(err);
       if(!user)
         return done(null, false);
 

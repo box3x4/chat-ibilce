@@ -213,9 +213,6 @@ $(function() {
       prepend: true
     });
 
-    if(data.numUsers > 1)
-      log('temos '+data.numUsers+' usuários ativos');
-
     username = data.username;
   });
 
