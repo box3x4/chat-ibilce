@@ -29,7 +29,7 @@ const postReg = (req, res, next) => {
                     if(err) console.log(err);
             });
 
-            return res.render('index',{auth: req.user});
+            return res.render('index',{error: false});
           }
         });
 };
