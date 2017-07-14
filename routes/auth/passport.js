@@ -1,6 +1,7 @@
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const User = require('../../models/userLocal');
+const app = require('../../app');
 
 passport.use('login', new localStrategy({
         usernameField : 'username',
@@ -12,8 +13,10 @@ passport.use('login', new localStrategy({
 
       if(err)
         return done(err);
-      if(!user)
+      if(!user) {
+        app.authFail = true;
         return done(null, false);
+      }
 
       User.comparePassword(senha, user.senha, (err, match) => {
 
@@ -21,10 +24,12 @@ passport.use('login', new localStrategy({
           return done(err);
 
         if(match)
-          return done(null, user);
+            return done(null, user);
 
-        else
+        else {
+          app.authFail = true;
           return done(null, false);
+        }
     });
   });
 }));

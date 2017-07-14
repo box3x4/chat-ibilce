@@ -63,9 +63,12 @@ app.use('/', routes);
 let http = require('http').Server(app);
 let io = require('socket.io')(http);
 let handler = require('./routes/socket/handler');
+let authFail = false;
 
 http.listen(app.get('port'));
 
 module.exports.chat = (room, user) => {
   handler(io, room, user);
 };
+
+module.exports.authFail = authFail;

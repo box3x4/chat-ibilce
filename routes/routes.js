@@ -15,7 +15,7 @@ const loggedIn = (req, res, next) => {
 let router = express.Router();
 
 router.get('/', loggedIn, index.get);
-router.get('/auth_failed', loggedIn, index.getFail);
+router.get('/auth_failed', index.getFail);
 
 router.get('/register', register.get);
 router.post('/register', register.post);

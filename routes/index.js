@@ -1,3 +1,5 @@
+let app = require('../app');
+
 const getIndex = (req, res, next) => {
         if(req.isAuthenticated)
           return res.render('chats');
@@ -5,7 +7,12 @@ const getIndex = (req, res, next) => {
 };
 
 const getAuthFailed = (req, res, next) => {
-      return res.render('index', {error: true});
+      if(app.authFail) {
+        app.authFail = false;
+        return res.render('index', {error: true});
+      }
+      return res.render('index', {error: false});
+
 };
 
 module.exports.get = getIndex;
