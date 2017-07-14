@@ -20,7 +20,7 @@ module.exports = (io, namespace, user) => {
         return;
 
       socket.username = user.username;
-      ++numUsers;
+      numUsers += 1;
       addedUser = true;
 
       socket.emit('login', {
@@ -30,7 +30,8 @@ module.exports = (io, namespace, user) => {
 
       socket.broadcast.emit('user joined', {
         username: socket.username,
-        numUsers: numUsers
+        numUsers: numUsers,
+        nsp: namespace
       });
     });
 
@@ -51,11 +52,12 @@ module.exports = (io, namespace, user) => {
     socket.on('disconnect', () => {
 
       if (addedUser) {
-        --numUsers;
+        numUsers -= 1;
 
         socket.broadcast.emit('user left', {
           username: socket.username,
-          numUsers: numUsers
+          numUsers: numUsers,
+          nsp: namespace
         });
       }
     });

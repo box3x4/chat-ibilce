@@ -11,13 +11,17 @@ const postReg = (req, res, next) => {
         const input = JSON.parse(JSON.stringify(req.body));
         const set = {
                 username: input.username,
-                senha: input.senha
+                senha: input.senha,
+                confirm: input.confirm
         };
+
+        if(set.senha !== set.confirm)
+          return res.render('register', {error: 's'});
 
         User.getUserByUsername(set.username, (err, user) => {
 
           if(user)
-            return res.render('register', {error: true});
+            return res.render('register', {error: 'u'});
           else {
             let newUser = new User({'username': set.username
                                     ,'senha': set.senha});

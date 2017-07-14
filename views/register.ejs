@@ -20,10 +20,19 @@
 </div>
 <div class="container">
 <div class="page-header">
-        <% if (error) { %>
+        <% if (error === 'u') { %>
+
                 <div class="panel panel-danger">
                         <div class="panel-heading">
                           <h3 class="panel-title">Usuário já cadastrado</h3>
+                        </div>
+                </div>
+        <% } %>
+        <% if (error === 's') { %>
+
+                <div class="panel panel-danger">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Senha e confirmação são diferentes</h3>
                         </div>
                 </div>
         <% } %>
@@ -41,13 +50,19 @@
                   <label for="username">Nome de usuario</label>
                   <div class="form-group">
                       <div class="col-lg-12">
-                        <input name="username" type="text" class="form-control"/>
+                        <input name="username" type="text" class="form-control" required placeholder="Usuário"/>
                       </div>
                   </div>
                   <label for="senha">Senha</label>
                   <div class="form-group">
                       <div class="col-lg-12">
-                        <input name="senha" type="password" class="form-control"/>
+                        <input name="senha" type="password" class="form-control" required placeholder="Senha"/>
+                      </div>
+                  </div>
+                  <label for="confirm">Confirmação de senha</label>
+                  <div class="form-group">
+                      <div class="col-lg-12">
+                        <input name="confirm" type="password" class="form-control" required placeholder="Confirmação"/>
                       </div>
                   </div>
                   <div class="row">

@@ -8,7 +8,7 @@ $(function() {
     '#C0C0C0', '#FF66B2', '#FF66FF', '#B266FF',
     '#6666FF', '#66B2FF', '#66FFFF', '#66FFB2',
     '#66FF66', '#B2FF66', '#FFFF66', '#FFB266', '#FF666'
-    
+
   ];
 
   // Initialize variables
@@ -30,11 +30,11 @@ $(function() {
 
   $inputMessage.focus();
 
+  socket.emit('add user', username);
+
   function capitalize(nsp) {
     return nsp.charAt(0).toUpperCase() + nsp.slice(1);
   }
-
-  socket.emit('add user', username);
 
   // Sends a chat message
   function sendMessage () {
@@ -212,6 +212,9 @@ $(function() {
     log(message, {
       prepend: true
     });
+
+    if(data.numUsers > 1)
+      log('temos '+data.numUsers+' usuários ativos');
 
     username = data.username;
   });
